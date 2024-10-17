@@ -3,7 +3,7 @@
         <div class="card-body">
             <h2 class="text-2xl font-bold font-[montserrat] px-2 mb-1">Daftar Petugas</h2>
             <div class="flex justify-between items-center">
-                <a href="{{ route('petugas.create') }}" class="btn btn-success btn-sm">
+                <a href="{{ route('petugas.create') }}" class="btn btn-success btn-sm font-[montserrat]">
                     Tambah Petugas
                 </a>
                 <form class="flex items-center gap-2" action="{{ route('petugas.index') }}">
@@ -20,7 +20,7 @@
                 </form>
             </div>
             <table class="table table-zebra w-full text-center my-4 border">
-                <thead class="bg-blue-900 text-white">
+                <thead class="bg-secondary text-white">
                     <tr>
                         <th class="py-2 px-4">No</th>
                         <th class="py-2 px-4">Nama Lengkap</th>
@@ -39,9 +39,13 @@
                             <td class="py-2 px-4">
                                 {{ $user->level }}</td>
                             <td class="py-2 px-4">
-                                <a href="{{ route('petugas.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{ route('petugas.edit', $user->id) }}" class="btn btn-warning btn-sm">
+                                    <img src="{{ asset('icon/edit.svg') }}">
+                                </a>
                                 <a href="{{ route('petugas.destroy', $user->id) }}" class="btn btn-error btn-sm"
-                                    data-confirm-delete="true">Hapus</a>
+                                    data-confirm-delete="true">
+                                    <img src="{{ asset('icon/trash.svg') }}">
+                                </a>
                             </td>
                         </tr>
                     @endforeach

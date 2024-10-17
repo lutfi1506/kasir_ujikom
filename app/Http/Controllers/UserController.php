@@ -37,7 +37,12 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        User::create($request->all());
+        User::create([
+            "nama_lengkap" => $request->nama_lengkap,
+            "email" => $request->email,
+            "password" => Hash::make($request->password),
+            "level" => $request->level
+        ]);
         Alert::toast('Data Berhasil Ditambah', 'success');
         return redirect()->route('petugas.index');
     }

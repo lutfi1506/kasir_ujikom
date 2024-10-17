@@ -4,6 +4,7 @@ module.exports = {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
     ],
     theme: {
         extend: {},
@@ -14,9 +15,9 @@ module.exports = {
             {
                 mytheme: {
                     primary: "#ffffff",
-                    secondary: "#202735",
+                    secondary: "#770d77",
                     accent: "#A7ADB4",
-                    neutral: "#333A48",
+                    neutral: "#a277CF",
                     "base-100": "#f6f8fa",
                     info: "#3ABFF8",
                     success: "#36D399",

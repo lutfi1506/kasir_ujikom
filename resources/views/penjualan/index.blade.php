@@ -23,12 +23,11 @@
                 </form>
             </div>
             <table class="table table-zebra border w-full text-center my-4">
-                <thead class="bg-blue-900 text-white">
+                <thead class="bg-secondary text-white">
                     <tr>
                         <th class="py-2 px-4">No</th>
                         <th class="py-2 px-4">Tanggal</th>
                         <th class="py-2 px-4">Pelanggan</th>
-                        <th class="py-2 px-4">Nama Petugas</th>
                         <th class="py-2 px-4">Status</th>
                         <th class="py-2 px-4">Aksi</th>
                     </tr>
@@ -39,12 +38,17 @@
                             <td class="py-2 px-4">{{ $loop->iteration }}</td>
                             <td class="py-2 px-4">{{ $penjualan->updated_at->format('d M Y H:i') }}</td>
                             <td class="py-2 px-4">{{ $penjualan->pelanggan->nama }}</td>
-                            <td class="py-2 px-4">{{ $penjualan->user->nama_lengkap }}</td>
                             <td class="py-2 px-4">{{ $penjualan->status }}</td>
                             <td class="py-2 px-4">
                                 @if ($penjualan->status == 'selesai')
+                                    <a href="{{ route('penjualan.create', $penjualan->id) }}"
+                                        class="btn btn-warning btn-sm">
+                                        <img src="{{ asset('icon/eye.svg') }}">
+                                    </a>
                                     <a href="{{ route('penjualan.nota', $penjualan->id) }}"
-                                        class="btn btn-accent btn-sm" target="_blank">Cetak Nota</a>
+                                        class="btn btn-accent btn-sm" target="_blank">
+                                        <img src="{{ asset('icon/printer.svg') }}">
+                                    </a>
                                 @else
                                     <a href="{{ route('penjualan.create', $penjualan->id) }}"
                                         class="btn btn-warning btn-sm">Lanjutkan</a>
@@ -55,7 +59,7 @@
                 </tbody>
             </table>
             <div>
-
+                {{ $penjualans->links() }}
             </div>
         </div>
     </div>

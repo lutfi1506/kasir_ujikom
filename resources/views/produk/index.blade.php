@@ -2,12 +2,11 @@
     <div class="card bg-primary shadow-xl">
         <div class="card-body">
             <h2 class="text-2xl font-bold font-[montserrat]">Daftar Produk</h2>
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-end">
                 <span class="flex gap-3">
-                    <a href="{{ route('produk.create') }}" class="btn btn-success btn-sm
-                    ">Tambah
+                    <a href="{{ route('produk.create') }}" class="btn btn-success btn-sm font-[montserrat]">Tambah
                         Produk</a>
-                    <a href="{{ route('addstok') }}" class="btn btn-info btn-sm">Tambah Stok</a>
+                    <a href="{{ route('addstok') }}" class="btn btn-info btn-sm font-[montserrat]">Tambah Stok</a>
                 </span>
                 <form class="flex items-center gap-2" action="{{ route('produk.index') }}">
                     <input class="input input-bordered w-32 sm:w-64" name="search" type="text"
@@ -22,8 +21,8 @@
                     </button>
                 </form>
             </div>
-            <table class="table table-zebra w-full text-center my-4 border">
-                <thead class="bg-blue-900 text-white">
+            <table class="table table-zebra w-full text-center my-3 border">
+                <thead class="bg-secondary text-white">
                     <tr>
                         <th class="px-4 py-2">No</th>
                         <th class="px-4 py-2">Kode Produk</th>
@@ -43,10 +42,13 @@
                                 {{ 'Rp. ' . number_format($produk->harga, 0, ',', '.') }}</td>
                             <td class="px-4 py-2">{{ $produk->stok === 0 ? 'habis' : $produk->stok }}</td>
                             <td class="px-4 py-2">
-                                <a href="{{ route('produk.edit', $produk->id) }}"
-                                    class="btn btn-warning btn-sm ">Edit</a>
+                                <a href="{{ route('produk.edit', $produk->id) }}" class="btn btn-warning btn-sm ">
+                                    <img src="{{ asset('icon/edit.svg') }}">
+                                </a>
                                 <a href="{{ route('produk.destroy', $produk->id) }}" class="btn btn-error btn-sm"
-                                    data-confirm-delete="true">Hapus</a>
+                                    data-confirm-delete="true">
+                                    <img src="{{ asset('icon/trash.svg') }}" alt="">
+                                </a>
                             </td>
                     </tr>
                     @endforeach

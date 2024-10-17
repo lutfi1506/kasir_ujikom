@@ -10,7 +10,7 @@
     <style>
         @media print {
             @page {
-                size: 57mm auto;
+                size: 80mm auto;
                 margin: 0;
             }
         }
@@ -18,53 +18,54 @@
 </head>
 
 <body class="font-[consolas]">
-    <div class="w-[57mm] p-[2mm] flex flex-col overflow-hidden text-xs">
-        <header class="text-center text-xs">
-            <h1 class="font-bold text-xl">Toko Suramadu</h1>
-            <p>Jl. Raya Timur, Majalengka, Jawa Barat</p>
-            <p>Telp. 0821-1111-2222</p>
-            {{ str_repeat('=', 25) }}
+    <div class="w-[58mm] p-2 flex flex-col overflow-hidden text-xs">
+        <header class="text-center mb-2">
+            <h1 class="font-bold text-2xl">BerkahCELL</h1>
+            <p class="text-sm">Jl. Raya Timur, Majalengka, Jawa Barat</p>
+            <p class="text-sm">Telp. 0821-1111-2222</p>
+            {{ str_repeat('=', 75) }}
         </header>
         <main>
-            <table class="w-full">
+            <table class="w-full table-auto">
                 <tr>
-                    <td>Tgl</td>
+                    </figure>
+                    <td class="font-semibold">Tgl</td>
                     <td>:</td>
                     <td>{{ date('Y-m-d H:i') }}</td>
                 </tr>
                 <tr>
-                    <td>Id</td>
+                    <td class="font-semibold">Id</td>
                     <td>:</td>
                     <td>{{ $penjualan->id }}</td>
                 </tr>
                 <tr>
-                    <td>Pelanggan</td>
+                    <td class="font-semibold">Pelanggan</td>
                     <td>:</td>
                     <td>{{ $penjualan->pelanggan->nama }}</td>
                 </tr>
                 <tr>
-                    <td>Kasir</td>
+                    <td class="font-semibold">Kasir</td>
                     <td>:</td>
                     <td>{{ $penjualan->user->nama_lengkap }}</td>
                 </tr>
             </table>
-            {{ str_repeat('-', 50) }}
+            {{ str_repeat('-', 75) }}
             <table class="w-full">
                 @foreach ($penjualan->detailPenjualan as $detail)
                     <tr>
-                        <td colspan="4" class="p-0">{{ $detail->nama_produk }}</td>
+                        <td colspan="4">{{ $detail->nama_produk }}</td>
                     </tr>
                     <tr>
-                        <td class="p-0">{{ $detail->jumlah }}</td>
-                        <td class="p-0">X</td>
-                        <td class="p-0">{{ number_format($detail->harga, 0, ',', '.') }}</td>
-                        <td class="text-right p-0">Rp.
+                        <td>{{ $detail->jumlah }}</td>
+                        <td>X</td>
+                        <td>{{ number_format($detail->harga, 0, ',', '.') }}</td>
+                        <td class="text-right">Rp.
                             {{ number_format($detail->jumlah * $detail->harga, 0, ',', '.') }}
                         </td>
                     </tr>
                 @endforeach
             </table>
-            {{ str_repeat('-', 50) }}
+            {{ str_repeat('-', 75) }}
             <table class="w-full">
                 <tr>
                     <td>Total</td>
@@ -80,10 +81,10 @@
                         {{ number_format($penjualan->bayar - $penjualan->total_harga, 0, ',', '.') }}</td>
                 </tr>
             </table>
-            {{ str_repeat('-', 50) }}
+            {{ str_repeat('-', 75) }}
         </main>
         <footer>
-            <p class="text-center text-xs">Terima Kasih atas kepercayaan anda. Sampai jumpa kembali</p>
+            <p class="text-center text-xs">Terima Kasih atas kepercayaan anda Sampai jumpa kembali</p>
         </footer>
     </div>
     <script>

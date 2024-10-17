@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenjualanController;
@@ -10,8 +11,12 @@ use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 
 Route::group(attributes: ['middleware' => 'auth'], routes: function (): void {
+    Route::get('/', DashboardController::class);
+    Route::get('/about', function () {
+        return view("about.index");
+    });
     Route::controller(PenjualanController::class)->group(function () {
-        Route::get('/', 'index')->name('penjualan.index');
+        Route::get('/transaksi', 'index')->name('penjualan.index');
         Route::get('/transaksi/{penjualan}', 'create')->name('penjualan.create');
         Route::post('/transaksi/init', 'init')->name('penjualan.init');
         Route::post('/transaksi/{penjualan}', 'store')->name('penjualan.store');

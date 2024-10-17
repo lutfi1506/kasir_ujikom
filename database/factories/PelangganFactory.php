@@ -18,7 +18,7 @@ class PelangganFactory extends Factory
     {
         return [
             'nama' => $this->faker->name(),
-            'alamat' => $this->faker->country(),
+            'alamat' => $this->faker->address(),
             'no_telp' => $this->faker->phoneNumber(),
         ];
     }

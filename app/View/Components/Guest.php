@@ -13,7 +13,6 @@ class Guest extends Component
      */
     public function __construct()
     {
-        //
     }
 
     /**
