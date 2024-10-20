@@ -42,7 +42,7 @@
                                 {{ 'Rp. ' . number_format($produk->harga, 0, ',', '.') }}</td>
                             <td class="px-4 py-2">{{ $produk->stok === 0 ? 'habis' : $produk->stok }}</td>
                             <td class="px-4 py-2">
-                                <a href="{{ route('produk.edit', $produk->id) }}" class="btn btn-warning btn-sm ">
+                                <a href="{{ route('produk.edit', $produk->id) }}" class="btn btn-warning btn-sm">
                                     <img src="{{ asset('icon/edit.svg') }}">
                                 </a>
                                 <a href="{{ route('produk.destroy', $produk->id) }}" class="btn btn-error btn-sm"

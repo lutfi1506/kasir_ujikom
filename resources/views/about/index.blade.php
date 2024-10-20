@@ -6,7 +6,7 @@
                 <img src="{{ asset('image/nabil.webp') }}" loading="lazy" class="w-40">
             </figure>
             <div class="card-body">
-                <h2 class="card-title text-3xl">Nabil Hasbi</h2>
+                <h2 class="card-title text-2xl">Nabil Hasbi</h2>
                 <p>12 RPL 3</p>
                 <p class="text-sm">SMKN 1 Kadipaten</p>
             </div>
@@ -16,7 +16,7 @@
                 <img src="{{ asset('image/irfan.webp') }}" loading="lazy" class="w-40">
             </figure>
             <div class="card-body">
-                <h2 class="card-title text-3xl">Irfan Juliana</h2>
+                <h2 class="card-title text-2xl">Irfan Juliana</h2>
                 <p>12 RPL 3</p>
                 <p class="text-sm">SMKN 1 Kadipaten</p>
             </div>
@@ -26,7 +26,7 @@
                 <img src="{{ asset('image/lutfi.webp') }}" loading="lazy" class="w-40">
             </figure>
             <div class="card-body">
-                <h2 class="card-title text-3xl">Lutfiar Rahman</h2>
+                <h2 class="card-title text-2xl">Lutfiar Rahman</h2>
                 <p>12 RPL 3</p>
                 <p class="text-sm">SMKN 1 Kadipaten</p>
             </div>
@@ -36,7 +36,7 @@
                 <img src="{{ asset('image/iim.webp') }}" loading="lazy" class="w-40">
             </figure>
             <div class="card-body">
-                <h2 class="card-title text-3xl">Iim Bahril Ilmi</h2>
+                <h2 class="card-title text-2xl">Iim Bahril Ilmi</h2>
                 <p>12 RPL 3</p>
                 <p class="text-sm">SMKN 1 Kadipaten</p>
             </div>

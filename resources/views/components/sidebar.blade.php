@@ -1,6 +1,6 @@
 <div class="fixed inset-0 z-30 bg-base-300/50 lg:hidden" x-show="sidebarOpen" @click="sidebarOpen = false"></div>
 
-<div class="fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto bg-secondary
+<div class="fixed inset-y-0 left-0 z-30 w-52 overflow-y-auto bg-secondary
      transition-transform duration-300 lg:translate-x-0 lg:static lg:inset-0"
     :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'">
     <div class="flex items-center justify-center mt-6">

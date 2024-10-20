@@ -1,17 +1,17 @@
 <x-main title="Tambah Transaksi">
-    <div class="flex gap-10 items-start">
+    <div class="flex gap-5 items-start">
         <div class="card bg-primary shadow-xl w-full">
             <div class="card-body">
                 <table class="table table-sm table-zebra text-center">
                     <thead class="bg-secondary text-white">
                         <tr>
-                            <th>No</th>
+                            <th class="max-w-7">No</th>
                             <th>Kode Produk</th>
                             <th class="w-28">Nama Produk</th>
-                            <th>Harga</th>
+                            <th class="min-w-24">Harga</th>
                             <th>Jumlah</th>
-                            <th>Total</th>
-                            <th>Aksi</th>
+                            <th class="min-w-24">Total</th>
+                            <th class="">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,20 +31,12 @@
                                 <td>{{ $detail->jumlah }}</td>
                                 <td class="text-end">Rp. {{ number_format($total, 0, ',', '.') }}</td>
                                 <td>
-                                    <form action="{{ route('penjualan.update', $detail->id) }}" method="post">
-                                        @csrf
-                                        @method('put')
-                                        <button type="submit" class="btn btn-warning btn-sm btn-square"
-                                            {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}>
-                                            <img src="/icon/edit.svg">
-                                        </button>
-                                        <a href="{{ route('penjualan.destroy', $detail->id) }}"
-                                            class="btn btn-error btn-sm btn-square"
-                                            {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}
-                                            data-confirm-delete="true">
-                                            <img src="/icon/trash.svg">
-                                        </a>
-                                    </form>
+                                    <a href="{{ route('penjualan.destroy', $detail->id) }}"
+                                        class="btn btn-error btn-sm btn-square"
+                                        {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}
+                                        data-confirm-delete="true">
+                                        <img src="/icon/trash.svg">
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -65,7 +57,7 @@
                     <div class="flex justify-between items-center">
                         <section class="text-sm">
                             <p>Penjualan id : {{ $penjualan->id }}</p>
-                            <p>Kasir : {{ $penjualan->nama_petugas }}</p>
+                            <p>Kasir : {{ $penjualan->user->nama_lengkap }}</p>
                             <p>Pelanggan: <br> {{ $penjualan->pelanggan->nama }}</p>
                         </section>
                         <section>
@@ -73,7 +65,7 @@
                                 method="post">
                                 @csrf
                                 @method('put')
-                                <select name="pelanggan" class="select select-bordered max-w-52"
+                                <select name="pelanggan" class="select select-bordered max-w-32"
                                     {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}>
                                     <option disabled selected>Pelanggan</option>
                                     @foreach ($pelanggan as $list)
@@ -90,10 +82,10 @@
                     <form action="{{ route('penjualan.store', $penjualan->id) }}" method="POST" class="flex gap-2   ">
                         @csrf
                         <input list="list-produk" name="kode_produk" placeholder="Kode Produk..."
-                            class="input input-bordered w-64" autocomplete="off" value="{{ $kode_produk }}"
+                            class="input input-bordered w-40" autocomplete="off"
                             {{ $penjualan->status == 'selesai' ? 'disabled' : '' }} required>
                         <input type="number" name="jumlah" min="1" value="{{ $jumlah ?? 1 }}"
-                            class="input input-bordered w-20" {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}>
+                            class="input input-bordered w-14" {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}>
                         <button type="submit" class="btn btn-success"
                             {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}>simpan</button>
                     </form>
@@ -103,16 +95,17 @@
                 <div class="card-body flex flex-col gap-3 ">
                     <section class="bg-warning  px-3 py-2 rounded">
                         <h2 class="text-xl">Subtotal : </h2>
-                        <p class="text-5xl text-end">Rp. {{ number_format($subtotal, 0, ',', '.') }}</p>
+                        <p class="text-4xl font-bold text-end">Rp. {{ number_format($subtotal, 0, ',', '.') }}</p>
                     </section>
                     @if ($penjualan->status == 'selesai')
                         <section class="bg-success px-3 py-2 rounded">
                             <h2 class="text-xl">Bayar : </h2>
-                            <p class="text-5xl text-end">Rp. {{ number_format($penjualan->bayar, 0, ',', '.') }}</p>
+                            <p class="text-4xl font-bold text-end">Rp.
+                                {{ number_format($penjualan->bayar, 0, ',', '.') }}</p>
                         </section>
                         <section class="bg-info px-3 py-2 rounded">
                             <h2 class="text-xl">Kembali : </h2>
-                            <p class="text-5xl text-end">
+                            <p class="text-4xl font-bold text-end">
                                 Rp. {{ number_format($penjualan->bayar - $subtotal, 0, ',', '.') }}
                             </p>
                         </section>

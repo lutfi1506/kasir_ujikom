@@ -16,7 +16,7 @@ class ProdukController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->search;
-        $produks = Produk::search($keyword)->latest()->paginate(8);
+        $produks = Produk::search($keyword)->latest()->paginate(8)->withQueryString();
         $title = 'Hapus produk!';
         $text = "Apakah kamu yakin ingin menghapus produk tersebut";
         confirmDelete($title, $text);

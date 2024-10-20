@@ -19,7 +19,7 @@ class PelangganController extends Controller
         $title = 'Hapus pelanggan!';
         $text = "Apakah kamu yakin ingin menghapus pelanggan tersebut";
         confirmDelete($title, $text);
-        $pelanggans = Pelanggan::search($search)->paginate(8);
+        $pelanggans = Pelanggan::search($search)->paginate(8)->withQueryString();
         return view('pelanggan.index', compact('pelanggans', 'search'));
     }
 

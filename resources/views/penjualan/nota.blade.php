@@ -21,17 +21,16 @@
     <div class="w-[80mm] p-2 flex flex-col overflow-hidden text-xs">
         <header class="text-center mb-2">
             <h1 class="font-bold text-2xl">BerkahCELL</h1>
-            <p class="text-sm">Jl. Raya Timur, Majalengka, Jawa Barat</p>
-            <p class="text-sm">Telp. 0821-1111-2222</p>
-            {{ str_repeat('=', 75) }}
+            <p class="text-xs">Jl. Raya Timur, Majalengka, Jawa Barat</p>
+            <p class="text-xs">Telp. 0821-1111-2222</p>
+            <div class="border-y my-1 pt-0.5 border-black border-dashed"></div>
         </header>
         <main>
             <table class="w-full table-auto">
                 <tr>
-                    </figure>
                     <td class="font-semibold">Tgl</td>
                     <td>:</td>
-                    <td>{{ date('Y-m-d H:i') }}</td>
+                    <td>{{ $penjualan->updated_at }}</td>
                 </tr>
                 <tr>
                     <td class="font-semibold">Id</td>
@@ -49,7 +48,7 @@
                     <td>{{ $penjualan->user->nama_lengkap }}</td>
                 </tr>
             </table>
-            {{ str_repeat('-', 75) }}
+            <div class="border-t border-black my-3 border-dashed"></div>
             <table class="w-full">
                 @foreach ($penjualan->detailPenjualan as $detail)
                     <tr>
@@ -65,7 +64,7 @@
                     </tr>
                 @endforeach
             </table>
-            {{ str_repeat('-', 75) }}
+            <div class="border-t border-black my-3 border-dashed"></div>
             <table class="w-full">
                 <tr>
                     <td>Total</td>
@@ -81,10 +80,11 @@
                         {{ number_format($penjualan->bayar - $penjualan->total_harga, 0, ',', '.') }}</td>
                 </tr>
             </table>
-            {{ str_repeat('-', 75) }}
+            <div class="border-t border-black my-3 border-dashed"></div>
         </main>
         <footer>
-            <p class="text-center text-xs">Terima Kasih atas kepercayaan anda Sampai jumpa kembali</p>
+
+            <p class="text-center text-xs">Terima Kasih atas kepercayaan anda <br> Sampai jumpa kembali</p>
         </footer>
     </div>
     <script>

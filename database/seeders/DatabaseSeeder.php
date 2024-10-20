@@ -16,18 +16,18 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Produk::factory(10)->create();
-        // User::factory()->create([
-        //     'nama_lengkap' => 'Test User',
-        //     'email' => 'test@example.com',
-        //     'level' => 'admin'
-        // ]);
+        User::factory()->create([
+            'nama_lengkap' => 'Irfan Juliana',
+            'email' => 'irfan@gmail.com',
+            'level' => 'admin'
+        ]);
 
-        // Pelanggan::factory()->create([
-        //     'nama' => 'umum',
-        //     'alamat' => '-',
-        //     'no_telp' => '088877776666'
-        // ]);
+        Pelanggan::factory()->create([
+            'nama' => 'umum',
+            'alamat' => '-',
+            'no_telp' => '088877776666'
+        ]);
 
-        Pelanggan::factory(10)->create();
+        // Pelanggan::factory(10)->create();
     }
 }

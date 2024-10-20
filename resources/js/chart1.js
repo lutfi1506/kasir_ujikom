@@ -26,8 +26,8 @@ import Chart from "chart.js/auto";
             ],
         },
         options: {
-            layout: {
-                padding: 5,
+            layout:{
+                padding:0,
             },
             plugins: {
                 legend: {

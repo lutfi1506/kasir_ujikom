@@ -15,7 +15,7 @@ class PenjualanController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get("date") ?? date("Y-m-d");
-        $penjualans = Penjualan::where("petugas_id", "=", Auth::user()->id)->with('pelanggan')->search($keyword)->latest('updated_at')->paginate(8);
+        $penjualans = Penjualan::with('pelanggan')->where("petugas_id", "=", Auth::user()->id)->search($keyword)->latest('updated_at')->paginate(8)->withQueryString();
         return view('penjualan.index', compact('penjualans', 'keyword'));
     }
 
@@ -70,19 +70,6 @@ class PenjualanController extends Controller
             }
         }
         return redirect()->route('penjualan.create', $penjualan->id);
-    }
-
-    public function update(DetailPenjualan $detail)
-    {
-        if ($detail->penjualan->status === 'selesai') {
-            Alert::toast('Penjualan Telah Selesai Tidak Bisa Menghapus Lagi', 'error');
-        } else {
-            $produk = Produk::where('kode_produk', '=', $detail->kode_produk)->first();
-            $stok = $produk->stok + $detail->jumlah;
-            $produk->update(['stok' => $stok]);
-            $detail->delete();
-        }
-        return redirect()->route('penjualan.create', [$detail->penjualan->id, 'kode_produk' => $detail->kode_produk, 'jumlah' => $detail->jumlah]);
     }
 
     public function updatePelanggan(Request $request, Penjualan $penjualan)

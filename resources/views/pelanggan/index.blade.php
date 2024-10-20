@@ -26,7 +26,7 @@
                         <th class="py-2 px-4">Nama Lengkap</th>
                         <th class="py-2 px-4">Alamat</th>
                         <th class="py-2 px-4">No Telepon</th>
-                        <th class="py-2 px-4">Aksi</th>
+                        <th class="py-2 px-4 min-w-32">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>

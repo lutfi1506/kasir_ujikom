@@ -37,7 +37,7 @@
                     @foreach ($detail as $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $row->penjualan->created_at->format('d M Y') }}</td>
+                            <td>{{ $row->penjualan->created_at->translatedFormat('d F Y') }}</td>
                             <td>{{ $row->kode_produk }}</td>
                             <td>{{ $row->nama_produk }}</td>
                             <td>Rp. {{ number_format($row->harga, 0, ',', '.') }}</td>
@@ -49,7 +49,8 @@
                 </tbody>
             </table>
             <div>
-                <a href="" class="btn btn-accent btn-sm">
+                <a href="{{ route('laporan.print', ['month' => $month]) }}" target="_blank"
+                    class="btn btn-accent btn-sm">
                     <img src="{{ asset('icon/printer.svg') }}">
                     Print
                 </a>
