@@ -94,7 +94,7 @@ class ProdukController extends Controller
             $produk->update([
                 'stok' => $stok
             ]);
-            Alert::toast('Stok Berhasil Ditambah', 'success');
+            Alert::toast("Stok $produk->nama_produk Berhasil Ditambahkan", 'success');
         } else {
             Alert::toast('Produk Tidak Ada', 'error');
         }

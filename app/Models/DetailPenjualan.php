@@ -22,7 +22,7 @@ class DetailPenjualan extends Model
 
     public function scopeSearch(Builder $query, $keyword): void
     {
-        $query->where('updated_at', 'like', "%$keyword%");
+        $query->where('updated_at', 'like', "$keyword%");
     }
 
     public function penjualan(): BelongsTo

@@ -1,6 +1,6 @@
 <x-main title="Tambah Stok">
     <div class="flex justify-center">
-        <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card w-96 bg-primary shadow-xl">
             <div class="card-body">
                 <h2 class="text-2xl font-bold font-[montserrat] text-center">Tambah Stok</h2>
                 <form action="{{ route('updatestok') }}" method="POST">

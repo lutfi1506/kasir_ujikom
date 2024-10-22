@@ -25,7 +25,7 @@ class DashboardController extends Controller
         $total_produk = DetailPenjualan::where("updated_at", "like", "$now%")->sum('jumlah');
         $jumlah_transaksi = Penjualan::where("updated_at", "like", "$now%")->count();
 
-        $bulan = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agus', 'Sep', 'Okt', 'Nov', 'Des'];
+        $bulan = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
         $grafik_penjualan = Penjualan::selectRaw("MONTH(updated_at) AS bulan, SUM(total_harga) AS total_harga")->where("updated_at", "like", "$tahun%")->groupBy('bulan')->orderBy('bulan')->get()->map(function ($item) use ($bulan) {
             return [
                 'bulan' => $bulan[$item->bulan - 1],

@@ -32,6 +32,9 @@
                         No
                     </th>
                     <th class="px-6  py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Tanggal
+                    </th>
+                    <th class="px-6  py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Kode
                     </th>
                     <th class="px-6  py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -57,6 +60,9 @@
                         <td class="px-6 py-0.5 text-center whitespace-nowrap text-sm font-medium text-gray-900">
                             {{ $loop->iteration }}
                         </td>
+                        <td class="px-6 py-0.5 text-center whitespace-nowrap text-sm font-medium text-gray-900">
+                            {{ $item->updated_at->translatedFormat('d F Y') }}
+                        </td>
                         <td class="px-6 py-0.5 whitespace-nowrap text-sm font-medium text-gray-900">
                             {{ $item->kode_produk }}
                         </td>
@@ -79,7 +85,7 @@
             </tbody>
             <tfoot class="border-b border-black">
                 <tr>
-                    <td colspan="5">Jumlah</td>
+                    <td colspan="6">Jumlah</td>
                     <td class="px-6 text-end whitespace-nowrap text-sm">{{ number_format($subtotal, 0, ',', '.') }}</td>
                     <td></td>
                 </tr>

@@ -81,9 +81,14 @@
                     </div>
                     <form action="{{ route('penjualan.store', $penjualan->id) }}" method="POST" class="flex gap-2   ">
                         @csrf
-                        <input list="list-produk" name="kode_produk" placeholder="Kode Produk..."
-                            class="input input-bordered w-40" autocomplete="off"
+                        <select name="kode_produk" placeholder="Kode Produk..." class="select select-bordered w-40"
                             {{ $penjualan->status == 'selesai' ? 'disabled' : '' }} required>
+                            <option value="" disabled selected>Produk</option>
+                            @foreach ($produk as $list)
+                                <option value="{{ $list->kode_produk }}">{{ $list->nama_produk }}
+                                </option>
+                            @endforeach
+                        </select>
                         <input type="number" name="jumlah" min="1" value="{{ $jumlah ?? 1 }}"
                             class="input input-bordered w-14" {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}>
                         <button type="submit" class="btn btn-success"
@@ -129,12 +134,4 @@
             </div>
         </div>
     </div>
-    <datalist id="list-produk">
-        @foreach ($produk as $list)
-            <option value="{{ $list->kode_produk }}">{{ $list->nama_produk }} |
-                Rp.{{ number_format($list->harga, 0, ',', '.') }} | {{ $list->stok }}
-            </option>
-        @endforeach
-    </datalist>
-
 </x-main>

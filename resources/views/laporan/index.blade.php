@@ -37,7 +37,7 @@
                     @foreach ($detail as $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $row->penjualan->created_at->translatedFormat('d F Y') }}</td>
+                            <td>{{ $row->updated_at->translatedFormat('d F Y') }}</td>
                             <td>{{ $row->kode_produk }}</td>
                             <td>{{ $row->nama_produk }}</td>
                             <td>Rp. {{ number_format($row->harga, 0, ',', '.') }}</td>
