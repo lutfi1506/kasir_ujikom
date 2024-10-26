@@ -10,7 +10,7 @@
     <style>
         @media print {
             @page {
-                size: 80mm auto;
+                size: 58mm auto;
                 margin: 0;
             }
         }
@@ -18,7 +18,7 @@
 </head>
 
 <body class="font-[consolas]">
-    <div class="w-[80mm] p-2 flex flex-col overflow-hidden text-xs">
+    <div class="w-[58mm] p-2 flex flex-col overflow-hidden text-xs">
         <header class="text-center mb-2">
             <h1 class="font-bold text-2xl">BerkahCELL</h1>
             <p class="text-xs">Jl. Raya Timur, Majalengka, Jawa Barat</p>
@@ -84,7 +84,7 @@
         </main>
         <footer>
 
-            <p class="text-center text-xs">Terima Kasih atas kepercayaan anda <br> Sampai jumpa kembali</p>
+            <p class="text-center text-xs">Terima Kasih atas kepercayaan anda Sampai jumpa kembali</p>
         </footer>
     </div>
     <script>
