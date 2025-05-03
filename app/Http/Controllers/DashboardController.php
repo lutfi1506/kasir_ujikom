@@ -38,9 +38,9 @@ class DashboardController extends Controller
         $grafik_barang = Produk::selectRaw("SUM(stok) AS stok, nama_produk")->groupBy('nama_produk')->get();
 
         // persen
-        $persen_penjualan = round(($total_penjualan - $total_penjualan_before) / $total_penjualan_before * 100);
-        $persen_produk = round(($total_produk - $total_produk_before) / $total_produk_before * 100);
-        $persen_jumlah_transaksi = round(($jumlah_transaksi - $jumlah_transaksi_before) / $jumlah_transaksi_before * 100);
+        $persen_penjualan = $total_penjualan_before != 0 ? round(($total_penjualan - $total_penjualan_before) / $total_penjualan_before * 100) : 0;
+        $persen_produk = $total_produk_before != 0 ? round(($total_produk - $total_produk_before) / $total_produk_before * 100) : 0;
+        $persen_jumlah_transaksi = $jumlah_transaksi_before != 0 ? round(($jumlah_transaksi - $jumlah_transaksi_before) / $jumlah_transaksi_before * 100) : 0;
         return view('dashboard.index', compact('total_penjualan', 'total_produk', 'grafik_penjualan', 'jumlah_transaksi', 'grafik_barang', 'persen_penjualan', 'persen_produk', 'persen_jumlah_transaksi'));
     }
 }

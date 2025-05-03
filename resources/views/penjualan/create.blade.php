@@ -16,29 +16,29 @@
                     </thead>
                     <tbody>
                         @php
-                            $subtotal = 0;
+                        $subtotal = 0;
                         @endphp
                         @foreach ($penjualan->detailPenjualan as $detail)
-                            @php
-                                $total = $detail->harga * $detail->jumlah;
-                                $subtotal += $total;
-                            @endphp
-                            <tr class="*:p-1">
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $detail->kode_produk }}</td>
-                                <td>{{ $detail->nama_produk }}</td>
-                                <td class="text-end">Rp. {{ number_format($detail->harga, 0, ',', '.') }}</td>
-                                <td>{{ $detail->jumlah }}</td>
-                                <td class="text-end">Rp. {{ number_format($total, 0, ',', '.') }}</td>
-                                <td>
-                                    <a href="{{ route('penjualan.destroy', $detail->id) }}"
-                                        class="btn btn-error btn-sm btn-square"
-                                        {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}
-                                        data-confirm-delete="true">
-                                        <img src="/icon/trash.svg">
-                                    </a>
-                                </td>
-                            </tr>
+                        @php
+                        $total = $detail->harga * $detail->jumlah;
+                        $subtotal += $total;
+                        @endphp
+                        <tr class="*:p-1">
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $detail->kode_produk }}</td>
+                            <td>{{ $detail->nama_produk }}</td>
+                            <td class="text-end">Rp. {{ number_format($detail->harga, 0, ',', '.') }}</td>
+                            <td>{{ $detail->jumlah }}</td>
+                            <td class="text-end">Rp. {{ number_format($total, 0, ',', '.') }}</td>
+                            <td>
+                                <a href="{{ route('penjualan.destroy', $detail->id) }}"
+                                    class="btn btn-error btn-sm btn-square"
+                                    {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}
+                                    data-confirm-delete="true">
+                                    <img src="/icon/trash.svg">
+                                </a>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                     <tfoot>
@@ -69,9 +69,9 @@
                                     {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}>
                                     <option disabled selected>Pelanggan</option>
                                     @foreach ($pelanggan as $list)
-                                        <option value="{{ $list->id }}" @selected($list->id == $penjualan->pelanggan_id)>
-                                            {{ $list->nama . ' - ' . $list->alamat }}
-                                        </option>
+                                    <option value="{{ $list->id }}" @selected($list->id == $penjualan->pelanggan_id)>
+                                        {{ $list->nama . ' - ' . $list->alamat }}
+                                    </option>
                                     @endforeach
                                 </select>
                                 <button type="submit" class="btn btn-success"
@@ -85,12 +85,12 @@
                             {{ $penjualan->status == 'selesai' ? 'disabled' : '' }} required>
                             <option value="" disabled selected>Produk</option>
                             @foreach ($produk as $list)
-                                <option value="{{ $list->kode_produk }}">{{ $list->nama_produk }}
-                                </option>
+                            <option value="{{ $list->kode_produk }}">{{ $list->nama_produk }}
+                            </option>
                             @endforeach
                         </select>
-                        <input type="number" name="jumlah" min="1" value="{{ $jumlah ?? 1 }}"
-                            class="input input-bordered w-14" {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}>
+                        <input type="text" inputmode="numeric" pattern="[0-9]+" name="jumlah" min="1" value="{{ $jumlah ?? 1 }}"
+                            class="input input-bordered w-14 appearance-none" {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}>
                         <button type="submit" class="btn btn-success"
                             {{ $penjualan->status == 'selesai' ? 'disabled' : '' }}>simpan</button>
                     </form>
@@ -103,32 +103,33 @@
                         <p class="text-4xl font-bold text-end">Rp. {{ number_format($subtotal, 0, ',', '.') }}</p>
                     </section>
                     @if ($penjualan->status == 'selesai')
-                        <section class="bg-success px-3 py-2 rounded">
-                            <h2 class="text-xl">Bayar : </h2>
-                            <p class="text-4xl font-bold text-end">Rp.
-                                {{ number_format($penjualan->bayar, 0, ',', '.') }}</p>
-                        </section>
-                        <section class="bg-info px-3 py-2 rounded">
-                            <h2 class="text-xl">Kembali : </h2>
-                            <p class="text-4xl font-bold text-end">
-                                Rp. {{ number_format($penjualan->bayar - $subtotal, 0, ',', '.') }}
-                            </p>
-                        </section>
-                        <div class="flex gap-2 justify-end">
-                            <a class="btn btn-secondary" href="{{ route('penjualan.index') }}">Selesai</a>
-                            <a href="{{ route('penjualan.nota', $penjualan->id) }}" class="btn btn-accent"
-                                target="_blank"><img src="{{ asset('icon/printer.svg') }}"> Cetak
-                                Nota</a>
-                        </div>
+                    <section class="bg-success px-3 py-2 rounded">
+                        <h2 class="text-xl">Bayar : </h2>
+                        <p class="text-4xl font-bold text-end">Rp.
+                            {{ number_format($penjualan->bayar, 0, ',', '.') }}
+                        </p>
+                    </section>
+                    <section class="bg-info px-3 py-2 rounded">
+                        <h2 class="text-xl">Kembali : </h2>
+                        <p class="text-4xl font-bold text-end">
+                            Rp. {{ number_format($penjualan->bayar - $subtotal, 0, ',', '.') }}
+                        </p>
+                    </section>
+                    <div class="flex gap-2 justify-end">
+                        <a class="btn btn-secondary" href="{{ route('penjualan.index') }}">Selesai</a>
+                        <a href="{{ route('penjualan.nota', $penjualan->id) }}" class="btn btn-accent"
+                            target="_blank"><img src="{{ asset('icon/printer.svg') }}"> Cetak
+                            Nota</a>
+                    </div>
                     @else
-                        <form action="{{ route('penjualan.bayar', $penjualan->id) }}" method="post"
-                            class="flex gap-2 justify-end">
-                            @csrf
-                            <input type="hidden" name="total_harga" value="{{ $subtotal }}">
-                            <input type="number" name="bayar" class="input input-bordered w-full"
-                                placeholder="Bayar..." value="{{ old('bayar') }}">
-                            <button type="submit" class="btn btn-success">Bayar</button>
-                        </form>
+                    <form action="{{ route('penjualan.bayar', $penjualan->id) }}" method="post"
+                        class="flex gap-2 justify-end">
+                        @csrf
+                        <input type="hidden" name="total_harga" value="{{ $subtotal }}">
+                        <input type="number" name="bayar" class="input input-bordered w-full"
+                            placeholder="Bayar..." value="{{ old('bayar') }}">
+                        <button type="submit" class="btn btn-success">Bayar</button>
+                    </form>
                     @endif
                 </div>
             </div>

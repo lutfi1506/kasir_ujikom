@@ -32,7 +32,7 @@ class Penjualan extends Model
 
     public function pelanggan(): BelongsTo
     {
-        return $this->belongsTo(Pelanggan::class);
+        return $this->belongsTo(Pelanggan::class)->withTrashed();
     }
 
     public function user(): BelongsTo

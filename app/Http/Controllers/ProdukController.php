@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProdukRequest;
 use App\Http\Requests\UpdateProdukRequest;
+use App\Http\Requests\UpdateStockRequest;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -86,7 +87,7 @@ class ProdukController extends Controller
         ]);
     }
 
-    public function updateStok(Request $request)
+    public function updateStok(UpdateStockRequest $request)
     {
         $produk = Produk::where('kode_produk', $request->kode_produk)->first();
         if ($produk) {
