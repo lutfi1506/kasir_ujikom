@@ -1,4 +1,5 @@
-#🧾 KasirApp
+
+# 🧾 KasirApp
 
 > Sistem Manajemen Penjualan Berbasis Web untuk Toko Ritel
 
