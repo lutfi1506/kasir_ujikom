@@ -9,6 +9,18 @@
 
 ---
 
+## 🌐 Live Preview
+
+Kamu bisa mencoba demo aplikasi secara langsung di sini:
+
+🔗 [Demo Aplikasi KasirApp](https://kasirapp-main-tgdaso.laravel.cloud)
+
+> ⚠️ Login Demo:  
+**Email:** `admin@gmail.com`  
+**Password:** `password`
+
+---
+
 ## 📌 Deskripsi Singkat
 
 **KasirApp** adalah sistem manajemen penjualan sederhana berbasis web yang membantu toko ritel dalam mengelola transaksi, stok barang, pelanggan, dan laporan keuangan secara efisien dan terpusat.
